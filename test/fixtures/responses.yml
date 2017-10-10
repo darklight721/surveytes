@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  responder_name: MyString
+  answers: MyText
+  survey: one
+
+two:
+  responder_name: MyString
+  answers: MyText
+  survey: two
