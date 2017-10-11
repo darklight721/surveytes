@@ -40,33 +40,38 @@ class Form extends Component {
       return <Redirect to="/" />
 
     return (
-      <div>
-        <p>Answer the survey</p>
-        {error
-          ? <Alert type="error" onClose={this.handleCloseError}>{error}</Alert>
-          : null
-        }
-        <form onSubmit={this.handleFormSubmit}>
-          <legend>{survey.name}</legend>
-          <div>
-            <label>Name</label>
-            <input
-              type="text"
-              value={form.name}
-              onChange={this.handleChangeName}
-            />
-          </div>
-          {survey.questions.map((question, index) => (
-            <AnswerField
-              key={index}
-              index={index}
-              question={question}
-              value={form.answers[index] || ''}
-              onChange={this.handleChangeAnswer}
-            />
-          ))}
-          <button type="submit" disabled={isLoading}>Submit</button>
-        </form>
+      <div className="container row">
+        <div className="col-md-6">
+          <h3>Answer the survey</h3>
+          {error
+            ? <Alert type="error" onClose={this.handleCloseError}>{error}</Alert>
+            : null
+          }
+          <form onSubmit={this.handleFormSubmit}>
+            <legend>{survey.name}</legend>
+            <div className="form-group">
+              <label>Your Name</label>
+              <input
+                type="text"
+                className="form-control"
+                value={form.name}
+                onChange={this.handleChangeName}
+              />
+            </div>
+            {survey.questions.map((question, index) => (
+              <AnswerField
+                key={index}
+                index={index}
+                question={question}
+                value={form.answers[index] || ''}
+                onChange={this.handleChangeAnswer}
+              />
+            ))}
+            <button type="submit" className="btn btn-primary" disabled={isLoading}>
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     )
   }

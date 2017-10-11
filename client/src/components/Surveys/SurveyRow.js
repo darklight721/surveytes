@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { inject } from 'mobx-react'
 import getSurveyLink from '../../utils/getSurveyLink'
 import { getResponses } from './api'
+import './surveyrow.css'
 
 class SurveyRow extends Component {
   state = { responses: [], isLoading: false, isOpen: false }
@@ -11,15 +12,17 @@ class SurveyRow extends Component {
     const { isOpen } = this.state
 
     return (
-      <div>
-        <div onClick={this.handleToggleResponses}>
-          <div>
-            {survey.name}
-            (<a href={getSurveyLink(survey.link_code)}>Link</a>)
+      <div className="survey-row card mt-1">
+        <div className="card-header" onClick={this.handleToggleResponses}>
+          <div className="row">
+            <div className="col">
+              {survey.name}{' '}
+              (<a href={getSurveyLink(survey.link_code)}>Link</a>)
+            </div>
+            {survey.questions.map((question, index) => (
+              <div key={index} className="col">{question}</div>
+            ))}
           </div>
-          {survey.questions.map((question, index) => (
-            <div key={index}>{question}</div>
-          ))}
         </div>
         {isOpen ? this.renderResponses() : null}
       </div>
@@ -30,12 +33,15 @@ class SurveyRow extends Component {
     const { responses } = this.state
 
     return (
-      <div>
-        {responses.map(response => (
-          <div key={response.id}>
-            <div>{response.respondent_name}</div>
+      <div className="card-body">
+        <h6 className="card-title">Responses: {responses.length}</h6>
+        {responses.map((response, index) => (
+          <div key={response.id} className="row">
+            <div className="col">
+              {index + 1}. {response.respondent_name}
+            </div>
             {response.answers.map((answer, index) => (
-              <div key={index}>{answer}</div>
+              <div key={index} className="col">{answer}</div>
             ))}
           </div>
         ))}

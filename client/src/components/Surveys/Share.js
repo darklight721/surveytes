@@ -9,12 +9,18 @@ const Share = ({ location }) => {
     return <Redirect to="/surveys/new" />
 
   return (
-    <div>
-      <p>Share your survey!</p>
-      <div>
-        <div>{survey.name}</div>
-        <div>Link: <span>{getSurveyLink(survey.link_code)}</span></div>
-      </div>
+    <div className="jumbotron">
+      <h1 className="display-3">Done!</h1>
+      <p className="lead">Now share your survey!</p>
+      <p className="lead">
+        <label>{survey.name}</label>
+        <input
+          readOnly
+          type="text"
+          className="form-control form-control-lg"
+          value={getSurveyLink(survey.link_code)}
+        />
+      </p>
     </div>
   )
 }

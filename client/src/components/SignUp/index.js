@@ -14,39 +14,46 @@ class SignUp extends Component {
     const { form, isLoading, error } = this.state
 
     return (
-      <div>
-        <p>Sign Up</p>
-        {error
-          ? <Alert type="error" onClose={this.handleCloseError}>{error}</Alert>
-          : null
-        }
-        <form onSubmit={this.handleSubmitForm}>
-          <div>
-            <label>Name</label>
-            <input
-              type="text"
-              value={form.name}
-              onChange={this.handleChangeName}
-            />
-          </div>
-          <div>
-            <label>Username</label>
-            <input
-              type="text"
-              value={form.username}
-              onChange={this.handleChangeUsername}
-            />
-          </div>
-          <div>
-            <label>Password</label>
-            <input
-              type="password"
-              value={form.password}
-              onChange={this.handleChangePassword}
-            />
-          </div>
-          <button type="submit" disabled={isLoading}>Sign Up</button>
-        </form>
+      <div className="container row">
+        <div className="col-md-6">
+          <h3>Sign Up</h3>
+          {error
+            ? <Alert type="error" onClose={this.handleCloseError}>{error}</Alert>
+            : null
+          }
+          <form onSubmit={this.handleSubmitForm}>
+            <div className="form-group">
+              <label>Name</label>
+              <input
+                type="text"
+                className="form-control"
+                value={form.name}
+                onChange={this.handleChangeName}
+              />
+            </div>
+            <div className="form-group">
+              <label>Username</label>
+              <input
+                type="text"
+                className="form-control"
+                value={form.username}
+                onChange={this.handleChangeUsername}
+              />
+            </div>
+            <div className="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                className="form-control"
+                value={form.password}
+                onChange={this.handleChangePassword}
+              />
+            </div>
+            <button type="submit" disabled={isLoading} className="btn btn-primary">
+              Sign Up
+            </button>
+          </form>
+        </div>
       </div>
     )
   }

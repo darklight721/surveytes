@@ -1,13 +1,26 @@
 import React, { Component } from 'react'
+import { DEFAULT_QUESTIONS } from '../../utils/questions'
+
+const OFFSET = DEFAULT_QUESTIONS.length + 1
 
 class QuestionField extends Component {
   render() {
-    const { value } = this.props
+    const { value, index } = this.props
 
     return (
-      <div>
-        <input type="text" value={value} onChange={this.handleChange} />
-        <button type="button" onClick={this.handleRemove}>&times;</button>
+      <div className="input-group mt-1">
+        <span className="input-group-addon">{index + OFFSET}</span>
+        <input
+          type="text"
+          className="form-control"
+          value={value}
+          onChange={this.handleChange}
+        />
+        <span className="input-group-btn">
+          <button type="button" className="btn btn-default" onClick={this.handleRemove}>
+            &times;
+          </button>
+        </span>
       </div>
     )
   }

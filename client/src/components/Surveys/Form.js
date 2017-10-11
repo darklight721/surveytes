@@ -1,16 +1,9 @@
 import React, { Component } from 'react'
 import { inject } from 'mobx-react'
+import { DEFAULT_QUESTIONS, MAX_CUSTOM_QUESTIONS } from '../../utils/questions'
 import Alert from '../Alert'
 import QuestionField from './QuestionField'
 import { createSurvey } from './api'
-
-const MAX_CUSTOM_QUESTIONS = 2
-
-const DEFAULT_QUESTIONS = [
-  'What is your favorite book?',
-  'Who is your favorite band?',
-  'What is your favorite food?'
-]
 
 class Form extends Component {
   state = {
@@ -23,50 +16,58 @@ class Form extends Component {
     const { form, isLoading, error } = this.state
 
     return (
-      <div>
-        <p>New Survey</p>
-        {error
-          ? <Alert type="error" onClose={this.handleCloseError}>{error}</Alert>
-          : null
-        }
-        <form onSubmit={this.handleSubmitForm}>
-          <div>
-            <label>Name</label>
-            <input
-              type="text"
-              value={form.name}
-              onChange={this.handleChangeName}
-            />
-          </div>
-          <div>
-            <label>Questions</label>
-            <ol>
+      <div className="container row">
+        <div className="col-md-6">
+          <h3>New Survey</h3>
+          {error
+            ? <Alert type="error" onClose={this.handleCloseError}>{error}</Alert>
+            : null
+          }
+          <form onSubmit={this.handleSubmitForm}>
+            <div className="form-group">
+              <label>Name</label>
+              <input
+                type="text"
+                className="form-control"
+                value={form.name}
+                onChange={this.handleChangeName}
+              />
+            </div>
+            <div className="form-group">
+              <label>Questions</label>
               {DEFAULT_QUESTIONS.map((question, index) => (
-                <li key={index}>
-                  <input readOnly type="text" value={question} />
-                </li>
+                <div key={index} className="input-group mt-1">
+                  <span className="input-group-addon">{index + 1}</span>
+                  <input
+                    readOnly
+                    type="text"
+                    className="form-control"
+                    value={question}
+                  />
+                </div>
               ))}
               {form.questions.map((question, index) => (
-                <li key={index}>
-                  <QuestionField
-                    index={index}
-                    value={question}
-                    onChange={this.handleChangeQuestion}
-                    onRemove={this.handleRemoveQuestion}
-                  />
-                </li>
+                <QuestionField
+                  index={index}
+                  value={question}
+                  onChange={this.handleChangeQuestion}
+                  onRemove={this.handleRemoveQuestion}
+                />
               ))}
-            </ol>
-            <button
-              type="button"
-              disabled={form.questions.length >= MAX_CUSTOM_QUESTIONS}
-              onClick={this.handleAddQuestion}
-            >
-              Add
+              <button
+                type="button"
+                className="btn btn-default mt-1"
+                disabled={form.questions.length >= MAX_CUSTOM_QUESTIONS}
+                onClick={this.handleAddQuestion}
+              >
+                Add Custom Question
+              </button>
+            </div>
+            <button type="submit" disabled={isLoading} className="btn btn-primary">
+              Submit
             </button>
-          </div>
-          <button type="submit" disabled={isLoading}>Submit</button>
-        </form>
+          </form>
+        </div>
       </div>
     )
   }

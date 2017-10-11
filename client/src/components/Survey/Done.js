@@ -8,8 +8,9 @@ const Done = ({ location, match }) => {
     return <Redirect to={`/r/${match.params.linkCode}`} />
 
   return (
-    <div>
-      Done!
+    <div className="jumbotron">
+      <h1 className="display-3">Thanks!</h1>
+      <p className="lead">Your response has been saved!</p>
     </div>
   )
 }

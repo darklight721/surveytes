@@ -21,16 +21,18 @@ class List extends Component {
     const { surveys } = this.state
 
     return (
-      <div>
-        <p>List</p>
-        <Link to="/surveys/new">New Survey</Link>
-        <ul>
-          {surveys.map(survey => (
-            <li key={survey.id}>
-              <SurveyRow survey={survey} />
-            </li>
-          ))}
-        </ul>
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <div className="float-right">
+              <Link to="/surveys/new" className="btn btn-primary btn-sm">New Survey</Link>
+            </div>
+            <h3>Surveys</h3>
+          </div>
+        </div>
+        {surveys.map(survey => (
+          <SurveyRow key={survey.id} survey={survey} />
+        ))}
       </div>
     )
   }

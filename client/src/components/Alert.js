@@ -1,10 +1,16 @@
 import React from 'react'
 
 const Alert = ({ children, type, onClose }) => (
-  <span className={type}>
+  <div className={`alert alert-${type === 'error' ? 'danger' : ''}`}>
+    {onClose
+      ?
+        <button type="button" onClick={onClose} className="close">
+          &times;
+        </button>
+      : null
+    }
     {children}
-    {onClose ? <button onClick={onClose}>&times;</button> : null}
-  </span>
+  </div>
 )
 
 export default Alert
