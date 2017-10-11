@@ -1,24 +1,36 @@
-# README
+# Surveytes
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+(Ignore the lame title)
 
-Things you may want to cover:
+This is a sample app that uses `rails` to serve the api, and `react` as the frontend framework, in a single project.
 
-* Ruby version
+Tested and running on:
 
-* System dependencies
+- `rails` ^5.1 (in API mode)
+- `react` ^16.0
 
-* Configuration
+The setup is based on this [guide](https://medium.com/superhighfives/a-top-shelf-web-stack-rails-5-api-activeadmin-create-react-app-de5481b7ec0b).
+The folder structure follows `rails`, but all frontend codes are now in `client` folder.
 
-* Database creation
+### Installation
 
-* Database initialization
+```
+bundle install
+cd client && npm install
+```
 
-* How to run the test suite
+### Development
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+rake start
+```
 
-* Deployment instructions
+That will start the rails server and the node server (for compiling the js codes).
 
-* ...
+### Testing
+
+Currently not available, sorry :(
+
+### Screenies
+
+[Imgur](https://i.imgur.com/nRlj0qh.gifv)

@@ -97,7 +97,7 @@ class Form extends Component {
     let { respondent_name, answers } = form
 
     respondent_name = respondent_name.trim()
-    answers = answers.map(a => a.trim())
+    answers = answers.filter(a => a).map(a => a.trim())
 
     if (survey.questions.length !== answers.filter(a => a).length)
       return this.setState({ error: 'Please answer all questions!' })
