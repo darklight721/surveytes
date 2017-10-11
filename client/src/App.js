@@ -3,16 +3,15 @@ import { Provider } from 'mobx-react'
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import Store from './Store'
 
-import Header from './Header'
-import Home from './Home'
-import Login from './Login'
-import Logout from './Logout'
-import SignUp from './SignUp'
-import Surveys from './Surveys'
-import Survey from './Survey'
-
-import RequireSessionRoute from './RequireSessionRoute'
-import RequireNoSessionRoute from './RequireNoSessionRoute'
+import Header from './components/Header'
+import Home from './components/Home'
+import Login from './components/Login'
+import Logout from './components/Logout'
+import SignUp from './components/SignUp'
+import Surveys from './components/Surveys'
+import Survey from './components/Survey'
+import RequireSessionRoute from './components/RequireSessionRoute'
+import RequireNoSessionRoute from './components/RequireNoSessionRoute'
 
 const store = new Store()
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import getSurveyLink from '../utils/getSurveyLink'
+import getSurveyLink from '../../utils/getSurveyLink'
 
 const Share = ({ location }) => {
   const { survey } = location.state || {}

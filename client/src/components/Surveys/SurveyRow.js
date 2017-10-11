@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { inject } from 'mobx-react'
-import getSurveyLink from '../utils/getSurveyLink'
+import getSurveyLink from '../../utils/getSurveyLink'
 import { getResponses } from './api'
 
 class SurveyRow extends Component {
@@ -35,7 +35,7 @@ class SurveyRow extends Component {
           <div key={response.id}>
             <div>{response.respondent_name}</div>
             {response.answers.map((answer, index) => (
-              <div>{answer}</div>
+              <div key={index}>{answer}</div>
             ))}
           </div>
         ))}
