@@ -4,7 +4,7 @@ class Admin::RegistrationsController < ApplicationController
   def create
     user = User.create(user_params)
     if user.valid?
-      render json: {message: I18n.t('messages.registration_success')}, status: :ok
+      render json: {user: user, token: user.issue_jwt}, status: :ok
     else
       render json: {error: user.errors.full_messages.join(', ')}, status: :bad_request
     end

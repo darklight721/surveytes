@@ -31,7 +31,6 @@
 
 en:
   messages:
-    registration_success: You have successfully signed up!
     login_fail: Login failed!
     survey_not_found: Survey not found!
     unauthorized: Unauthorized!

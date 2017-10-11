@@ -5,8 +5,7 @@ class Admin::SessionsController < ApplicationController
     user = User.find_by_username(params[:username])
 
     if user && user.authenticate(params[:password])
-      token = JsonWebToken.encode({'user_id' => user.id})
-      render json: {user: user, token: token}, status: :ok
+      render json: {user: user, token: user.issue_jwt}, status: :ok
     else
       render json: {error: I18n.t('messages.login_fail')}, status: :unauthorized
     end
